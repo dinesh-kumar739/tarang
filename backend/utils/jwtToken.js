@@ -7,8 +7,8 @@ export const generateToken = async (user, message, statusCode, res) => {
 
     return res.status(statusCode).cookie("token", token,{
         httpOnly: true,
-        maxAge: process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000, // Convert days to milliseconds
-        sameSite: "strict",
+        maxAge: process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
+        sameSite: "none",
         secure: process.env.NODE_ENV !== "development" ? true : false,
     }).json({
         success: true,
